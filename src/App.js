@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Pokedex from "./Pokedex.jsx"
+import Search from "./Components/Search.jsx";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+import './index.css';
+
+const App = () => {
+ return (
+  <BrowserRouter>
+    <div style={{display: 'flex', alignContent: 'center', justifyContent: 'center'}}>
+      <header className="nav">
+        <nav><Link to="/">Pokedex</Link></nav>
+        <nav><Link to="/search">Search</Link></nav>
       </header>
     </div>
-  );
+    <div style={{display: 'flex', alignContent: 'center', justifyContent: 'center'}}>
+      <h1>Pokedex</h1>
+    </div>
+    <div className='pokedex-elements'>
+      <Routes>
+        <Route path="/" element={<Pokedex />} />
+        <Route path="/search" element={<Search />} />
+      </Routes>
+    </div>
+  </BrowserRouter>
+ );
 }
 
 export default App;
